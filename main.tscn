@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://c34e0sf8m0uxe"]
+
+[ext_resource type="PackedScene" uid="uid://bxadulpex4b56" path="res://parallax.tscn" id="1_ig7tw"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://world_1.tscn\")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 895.0
+offset_top = 37.0
+offset_right = 1141.0
+offset_bottom = 190.0
+text = "Crabion - creator
+
+Thanks for sprites!
+ Pixramen - raptor sprites
+Digital Forge - terrain and auido
+"
+
+[node name="Start" type="Button" parent="."]
+offset_left = 522.0
+offset_top = 403.0
+offset_right = 643.0
+offset_bottom = 478.0
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 522.0
+offset_right = 645.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 497.0
+offset_top = 95.0
+offset_right = 686.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 48
+text = "Defense"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ig7tw")]
+offset = Vector2(0, -30)
+scale = Vector2(3.8, 3.8)
+transform = Transform2D(3.8, 0, 0, 3.8, 0, -30)
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
